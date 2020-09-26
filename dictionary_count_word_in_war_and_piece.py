@@ -42,3 +42,15 @@ count_word(example_one)
 
 example_two = "a A a"
 count_word(example_two)
+
+"""
+text = input().lower().split()
+dictionary = dict()
+for word in text:
+    if(word not in dictionary):
+        dictionary[word] = 1
+    else:
+        dictionary[word]+=1
+for word, count in dictionary.items():
+    print(word, count)
+"""
