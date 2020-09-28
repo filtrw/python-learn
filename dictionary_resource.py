@@ -40,3 +40,13 @@ for element in original_array:
     if element not in dictionary_for_function:
         dictionary_for_function[element] = f(element)
     print(dictionary_for_function[element], end="\n")
+
+"""
+a = {}
+for i in range(int(input())):
+    b = int(input())
+    if b not in a:
+        a[b] = f(b)
+    print(a[b])
+
+"""

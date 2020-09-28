@@ -22,3 +22,35 @@ end
 Sample Output 2:
 4
 """
+
+row_array_input = []
+input_string = "run"
+while input_string != "end":
+    input_string = input()
+    if input_string != "end":
+        row_array_input.append([int(i) for i in input_string.split(" ")])
+
+# print(row_array_input)
+# print(len(row_array_input), len(row_array_input[1]))
+sum_element = 0
+for row in range(len(row_array_input)):
+    for column in range(len(row_array_input[row])):
+        sum_element = 0
+        """i-1, j"""
+        sum_element += row_array_input[row - 1][column]
+        """i+1, j"""
+        if (row + 1 >= len(row_array_input)):
+            sum_element += row_array_input[0][column]
+        else:
+            sum_element += row_array_input[row + 1][column]
+        """i, j-1"""
+        sum_element += row_array_input[row][column - 1]
+        """i, j+1"""
+        if (column + 1 >= len(row_array_input[row])):
+            sum_element += row_array_input[row][0]
+        else:
+            sum_element += row_array_input[row][column + 1]
+
+        print(sum_element, end=" ")
+        # row_array_output[row].append(sum_element)
+    print("")
