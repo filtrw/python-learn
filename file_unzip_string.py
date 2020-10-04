@@ -43,5 +43,5 @@ def write_unzip_string(output_file_path, output_string):
         outfile.write(output_string)
 
 
-test_string = read_zip_string(os.path.join(".", "file_samples", "dataset_3363_2.txt"))
+test_string = read_zip_string(os.path.join(".", "file_samples", "input.txt"))
 write_unzip_string(os.path.join(".", "file_samples", "output.txt"), unzip_string(test_string))
