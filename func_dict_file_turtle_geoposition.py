@@ -31,8 +31,8 @@ Sample Output:
 command_count = int(input())
 turtle_coordinate = {"север": 0, "юг": 0, "восток": 0, "запад": 0}
 for command in range(command_count):
-    command_string = input().split()
-    turtle_coordinate[command_string[0]] += int(command_string[1])
+    [direction, count] = input().split()
+    turtle_coordinate[direction] += int(count)
 y_axis_position = turtle_coordinate["север"] - turtle_coordinate["юг"]
 x_axis_position = turtle_coordinate["восток"] - turtle_coordinate["запад"]
 print(x_axis_position, y_axis_position)

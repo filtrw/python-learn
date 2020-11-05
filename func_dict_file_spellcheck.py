@@ -24,16 +24,28 @@ champignons
 the
 """
 
-word_count = int(input())
-spellcheck_dictionary = set()
-for word in range(word_count):
-    spellcheck_dictionary.add(input().lower())
-string_count = int(input())
+
+def get_correct_words():
+    word_count = int(input())
+    spellcheck_dictionary = set()
+    for word in range(word_count):
+        spellcheck_dictionary.add(input().lower())
+    return spellcheck_dictionary
+
+
+def get_check_words():
+    string_count = int(input())
+
+    for line in range(string_count):
+        check_string = input().lower().split()
+        for word in check_string:
+            yield word
+
+
+correct_words = get_correct_words()
 error_dictionary = set()
-for line in range(string_count):
-    check_string = input().lower().split()
-    for word in check_string:
-        if word not in spellcheck_dictionary:
-            error_dictionary.add(word.lower())
+for word in get_check_words():
+    if word not in correct_words:
+        error_dictionary.add(word.lower())
 
 print("\n".join(error_dictionary))
