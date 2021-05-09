@@ -6,6 +6,8 @@ from os import path
 def test_good_recursive(create_folder_structure):
     my_func_list = list(folder_gen.get_file_names(create_folder_structure['root'], recursive=True))
     assert len(my_func_list) == len(create_folder_structure['files'])
+
+    # need sort for same order of folder and files. Order is not significant for this function
     assert sorted(my_func_list) == sorted(create_folder_structure['files'])
 
 
