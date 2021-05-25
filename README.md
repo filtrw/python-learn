@@ -24,4 +24,5 @@ Execution of exercises different courses and videos for learning Python
 
 - Different video by interesting theme
 - Directory for train: [otus_other_python_features](/otus_other_python_features)
+- Train for tests, generator
 
