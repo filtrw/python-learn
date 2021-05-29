@@ -1,0 +1,10 @@
+Using 'plain'
+
+----------------------------------------------
+
+Firstly, I import plain
+    >>> import plain
+
+Now, I use it
+    >>> plain.sqrt(9)
+    3.0
