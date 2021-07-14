@@ -6,19 +6,23 @@
 
 
 def define_multiple(number):
-    three_multiple = number % 3
-    five_multiple = number % 5
+    is_three_multiple = number % 3
+    is_five_multiple = number % 5
 
-    if three_multiple == 0 and five_multiple == 0:
+    if is_three_multiple == 0 and is_five_multiple == 0:
         print("FizzBuzz", end=" ")
-    elif three_multiple == 0:
+    elif is_three_multiple == 0:
         print("Fizz", end=" ")
-    elif five_multiple == 0:
+    elif is_five_multiple == 0:
         print("Buzz", end=" ")
     else:
         print(number, end=" ")
 
 
-if __name__ == '__main__':
+def main():
     for number in range(1, 100):
         define_multiple(number)
+
+
+if __name__ == '__main__':
+    main()
