@@ -49,8 +49,8 @@ if __name__ == '__main__':
         print(f"{student[0]} with total score {student[1]}")
 
     print("TOP-3 the most difficult tasks")
-    ordered_tasks_rate.reverse()
-    for task in ordered_tasks_rate[0:3]:
+
+    for task in ordered_tasks_rate[:-4:-1]:
         print(f"Task #{task[0]} with total score {task[1]}")
 
 
