@@ -1,4 +1,5 @@
 .idea
 venv
 level1_beginner/file_samples/output*.txt
+level1_beginner/.ipynb_checkpoints
 level2_basics_and_application/file_samples/output*.txt
