@@ -7,25 +7,28 @@
 import math
 
 
-def main():
-    string_to_convert = input('Please, input string to convert ')
+def str_to_int(input_str: str):
     int_from_string = 0
     ten_power = 0
-    count_chr_in_str = len(string_to_convert) - 1
+    count_chr_in_str = len(input_str) - 1
+
     for index in range(count_chr_in_str, -1, -1):
         if index == count_chr_in_str:
-            int_from_string = ord(string_to_convert[index])
+            int_from_string = ord(input_str[index])
         else:
-            previous = ord(string_to_convert[index + 1])
-            current = ord(string_to_convert[index])
-            if previous < 100:
-                ten_power += 2
-            elif previous >= 100:
-                ten_power += 3
+            previous = ord(input_str[index + 1])
+            current = ord(input_str[index])
 
+            ten_power += 2 if previous < 100 else 3
             int_from_string += current * 10 ** ten_power
-    print(f'Converted string in int is {int_from_string}')
+
     return int_from_string
+
+
+def main():
+    string_to_convert = input('Please, input string to convert ')
+    int_from_string = str_to_int(string_to_convert)
+    print(f'Converted string in int is {int_from_string}')
 
 
 if __name__ == '__main__':

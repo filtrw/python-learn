@@ -22,6 +22,8 @@
 Дополнительно
 Документирование функций обязательно
 """
+import os
+from os import system, name
 
 # Structure of phone book is dictionary, where
 # key is name of man and value is list of phone number
@@ -39,7 +41,7 @@ def menu():
 
     :return:
     """
-    welcome_text = "Please, choose action with phonebook: \nInput ADD for adding phone number \nInput PRINT for " \
+    welcome_text = "\nPlease, choose action with phonebook: \nInput ADD for adding phone number \nInput PRINT for " \
                    " display phone number \nInput DEL for deleting phone number\n"
 
     add_func = "ADD"
@@ -111,7 +113,7 @@ def output_numbers_by_name(name: str):
     # Кирилл      11111111
     # Кирилл      22222222
 
-    print(f'имя \t номер')
+    print(f'\nимя \t номер')
     for phone in phonebook[name]:
         print(f'{name} \t {phone}')
 
