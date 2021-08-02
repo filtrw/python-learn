@@ -42,9 +42,7 @@ def select(*field_name: list):
 
     def inner_select(record: dict):
         # Inner selection work with record and return new instance only with required fields
-        updated_record = {}
-        for key in field_name:
-            updated_record[key] = record[key]
+        updated_record = {key: record[key] for key in field_name}
         return updated_record
 
     return inner_select
@@ -122,8 +120,6 @@ def main():
     ]
 
     result = query(
-        friends,
-        friends,
         friends,
         select('name', 'gender', 'sport'),
         field_filter('sport', ['Баскетбол', 'Волейбол']),

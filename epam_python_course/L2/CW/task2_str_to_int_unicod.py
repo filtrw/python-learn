@@ -4,7 +4,6 @@
 Пример: вход - 'abcd', выход -979899100,
 тип выхода - int
 """
-import math
 
 
 def str_to_int(input_str: str):

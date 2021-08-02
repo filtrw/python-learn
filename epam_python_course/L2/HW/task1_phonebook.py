@@ -22,14 +22,9 @@
 Дополнительно
 Документирование функций обязательно
 """
-import os
-from os import system, name
 
-# Structure of phone book is dictionary, where
-# key is name of man and value is list of phone number
-# For example:
-# {'Joe': ['111111111', '222222222']}
-import sys
+SELECTION_TEXT = "\nPlease, choose action with phonebook: \nInput ADD for adding phone number \nInput PRINT for " \
+                 " display phone number \nInput DEL for deleting phone number\n"
 
 phonebook = {}
 
@@ -41,25 +36,26 @@ def menu():
 
     :return:
     """
-    welcome_text = "\nPlease, choose action with phonebook: \nInput ADD for adding phone number \nInput PRINT for " \
-                   " display phone number \nInput DEL for deleting phone number\n"
 
     add_func = "ADD"
     output_func = "PRINT"
     delete_func = "DEL"
 
-    current_selection = input(welcome_text)
+    current_selection = input(SELECTION_TEXT)
 
     if current_selection == add_func:
         input_name = input("Please, input name for adding phone number ")
         input_number = input("Please, input phone number ")
         add_number_by_name(input_name, input_number)
+
     elif current_selection == output_func:
         input_name = input("Please, input name for display phone numbers ")
         output_numbers_by_name(input_name)
+
     elif current_selection == delete_func:
         input_name = input("Please, input name for deleting phone numbers ")
         delete_by_name(input_name)
+
     else:
         print("Incorrect command for action. Please, input ADD or PRINT or DEL")
 
@@ -93,7 +89,7 @@ def delete_by_name(name: str):
     :return:
     """
     if name in phonebook:
-        phonebook.pop(name)
+        del phonebook[name]
     else:
         print(f"Man with name is {name} not found in phonebook")
 
@@ -112,11 +108,12 @@ def output_numbers_by_name(name: str):
     # имя         номер
     # Кирилл      11111111
     # Кирилл      22222222
-
-    print(f'\nимя \t номер')
-    for phone in phonebook[name]:
-        print(f'{name} \t {phone}')
-
+    if name in phonebook:
+        print(f'\nимя \t номер')
+        for phone in phonebook[name]:
+            print(f'{name} \t {phone}')
+    else:
+        print(f"Man with name is {name} not found in phonebook")
 
 def main():
     while True:
@@ -193,3 +190,17 @@ def test_output_numbers_by_name():
     output_numbers_by_name('Alex')
     output_numbers_by_name('Kate')
     output_numbers_by_name('Joe')
+
+
+def test_output_by_incorrect_name(capsys):
+    global phonebook
+    phonebook = {
+        'Joe': ['111111111', '333333333'],
+        'Kate': ['222222222']
+    }
+
+    name = "Peter"
+    output_numbers_by_name(name)
+    captured = capsys.readouterr()
+
+    assert captured.out == f"Man with name is {name} not found in phonebook\n"
