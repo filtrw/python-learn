@@ -71,9 +71,21 @@ def main():
     int_from_string = str_to_int(string_to_convert)
     print(f'First function (direct). Converted string in int is {int_from_string}')
 
-    int_from_string2 = str_to_int2(string_to_convert, 0)
+    int_from_string2 = str_to_int2(string_to_convert)
     print(f'Second function (reverse). Converted string in int is {int_from_string2}')
 
 
 if __name__ == '__main__':
     main()
+
+
+def test_str_to_int():
+    input_str = "abcd"
+    expected_res = 979899100
+    assert expected_res == str_to_int(input_str)
+
+
+def test_str_to_int2():
+    input_str = "abcd"
+    expected_res = 979899100
+    assert expected_res == str_to_int2(input_str)

@@ -15,30 +15,20 @@ Pixel created!
 """
 import functools
 
+def validate(low_bound, upper_bound):
+    def decorator(func):
 
-def with_arguments(deco):
-    @functools.wraps(deco)
-    def wrapper(*dargs, **dkwargs):
-        def decorator(func):
-            result = deco(func, *dargs, **dkwargs)
-            functools.update_wrapper(result, func)
-            return result
+        @functools.wraps(func)
+        def inner(*args, **kwargs):
 
-        return decorator
+            if all((element >= low_bound) and (element <= upper_bound) for element in args[0]):
+                return func(*args, **kwargs)
+            else:
+                print("Function call is no valid!")
 
-    return wrapper
+        return inner
 
-
-@with_arguments
-def validate(func, low_bound, upper_bound):
-    def inner(*args, **kwargs):
-
-        if all((element >= low_bound) and (element <= upper_bound) for element in args[0]):
-            return func(*args, **kwargs)
-        else:
-            print("Function call is no valid!")
-
-    return inner
+    return decorator
 
 
 @validate(low_bound=0, upper_bound=256)
