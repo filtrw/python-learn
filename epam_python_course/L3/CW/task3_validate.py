@@ -15,7 +15,18 @@ Pixel created!
 """
 import functools
 
-def validate(low_bound, upper_bound):
+
+def validate(low_bound: int, upper_bound: int):
+    """Decorator to check function input parameters.
+    If parameters is correct, function will be called. Otherwise, will be displayed message about error
+
+    :param low_bound: low bound of value for parameters
+    :type low_bound: int
+    :param upper_bound: upper bound of value for parameters
+    :type upper_bound: int
+    :return: function if parameters correct, nothing in otherwise
+    """
+
     def decorator(func):
 
         @functools.wraps(func)
@@ -32,7 +43,13 @@ def validate(low_bound, upper_bound):
 
 
 @validate(low_bound=0, upper_bound=256)
-def set_pixel(pixel_values):
+def set_pixel(pixel_values: tuple):
+    """Output message about pixel creation
+
+    :param pixel_values: point values for pixel creation
+    :type pixel_values: tuple
+    :return:
+    """
     print("Pixel created!")
 
 

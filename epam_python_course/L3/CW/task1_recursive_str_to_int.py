@@ -3,13 +3,11 @@
 Пример: вход - 'abcd', выход -979899100,
 тип выхода - int
 """
-
 import math
 
 
 def str_to_int(input_str: str) -> int:
-    """
-    Recursive function to convert string to int without using int(), str().
+    """Recursive function to convert string to int without using int(), str().
     This function work in direct order:starts to convert from first char of string and recursive call itself
     for other chars in string
 
@@ -35,8 +33,7 @@ def str_to_int(input_str: str) -> int:
 
 
 def str_to_int2(input_str: str, previous_int: int = 0) -> int:
-    """
-    Recursive function to convert string to int without using int(), str().
+    """Recursive function to convert string to int without using int(), str().
     This function work in reverse order:starts to convert from last char of string and recursive call itself
     for other chars in string
 

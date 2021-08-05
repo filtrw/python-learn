@@ -7,18 +7,33 @@ import time
 
 
 def time_it(func):
+    """Decorator function to compute function time execution.
+
+    :param func: function which time execution need to compute
+    :type func: function
+    :return: result of execution input function
+    """
+
     @functools.wraps(func)
     def inner(*args, **kwargs):
         t0 = time.time()
-        func(*args, **kwargs)
+        result = func(*args, **kwargs)
         t1 = time.time()
         print(f"Time for execution func {func.__name__} is {t1 - t0} second")
+        return result
 
     return inner
 
 
 @time_it
-def fib(n):
+def fib(n: int) -> int:
+    """Compute n-unit in Fibonacci sequence. During to compute all previous units stored in list
+
+    :param n: number of unit which need to compute
+    :type n: int
+    :return: value of n-unit in Fibonacci sequence
+    :rtype: int
+    """
     fib_array = [0, 1]
 
     for element in range(2, n + 1):
