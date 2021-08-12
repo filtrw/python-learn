@@ -54,22 +54,16 @@ def fabric(handler):
     :type handler: function
     :return:
     """
-    """Фабрика декораторов"""
-    print("Fabric called! ")
 
     def create_decorator(dec_func):
-        print("Create decorator called", dec_func.__name__)
 
         def decorator(*dargs, **dkwargs):
-            print("Decorator called", *dargs, **dkwargs)
 
             def worker(work_func):
-                print("Inner func", work_func.__name__)
 
                 deco = dec_func(*dargs, **dkwargs)(work_func)
 
                 def inner(*args, **kwargs):
-                    print("Args of inner func", work_func.__name__, *args, **kwargs)
 
                     if fabric.enabled:
                         return handler(deco(*args, **kwargs))
@@ -86,7 +80,8 @@ def fabric(handler):
 
 
 def off():
-    """Turn off work of decorator in fabric of decorators
+    """
+    Turn off work of decorator in fabric of decorators
 
     :return:
     """
@@ -94,7 +89,8 @@ def off():
 
 
 def on():
-    """turn on work of decorator in fabric of decorators
+    """
+    Turn on work of decorator in fabric of decorators
 
     :return:
     """
@@ -108,14 +104,14 @@ fabric.on = on
 
 @fabric(lambda x: x ** 2)
 def repeat(times: int):
-    """Decorator for repeat functions required times and compute average of result function call
+    """
+    Decorator for repeat functions required times and compute average of result function call
 
     :param times: amount of times to repeat function calls
     :type times: int
     :return: average of result function call
     :rtype: float
     """
-    """Повторить вызов times раз, и вернуть среднее значение"""
 
     def decorator(func):
         @functools.wraps(func)
@@ -141,17 +137,35 @@ def foo(*args, **kwargs) -> int:
     :return: constant value
     :rtype: int
     """
-    """Функция которая работает... и все"""
     print("Foo called!")
     return 3
 
 
-print("FOR TRUE called foo", foo([1, 3, 5]))
+def main():
+    print("FOR TRUE called foo", foo([1, 3, 5]))
 
-# Foo called!
-# Foo called!
-# Foo called!
-# 9
-fabric.off()
-print("FOR FALSE called foo", foo([1, 3, 5]))
-# 9
+    fabric.off()
+    print("FOR FALSE called foo", foo([1, 3, 5]))
+
+    fabric.on()
+
+
+if __name__ == '__main__':
+    main()
+
+
+def test_decorated_foo(capsys):
+    fabric.on()
+    expected_result_stdout = "Foo called!\n" * 4
+    expected_result = 9.0
+    assert expected_result == foo([1, 3, 5])
+    assert expected_result_stdout == capsys.readouterr().out
+
+
+def test_decorator_off_foo(capsys):
+    fabric.off()
+    expected_result_stdout = "Foo called!\n"
+    expected_result = 9
+
+    assert expected_result == foo([1, 3, 5])
+    assert expected_result_stdout == capsys.readouterr().out
