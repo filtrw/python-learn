@@ -166,6 +166,5 @@ def test_decorator_off_foo(capsys):
     fabric.off()
     expected_result_stdout = "Foo called!\n"
     expected_result = 9
-
     assert expected_result == foo([1, 3, 5])
     assert expected_result_stdout == capsys.readouterr().out
