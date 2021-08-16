@@ -108,6 +108,7 @@ def output_numbers_by_name(name: str):
     # имя         номер
     # Кирилл      11111111
     # Кирилл      22222222
+    # "Return Early Pattern"
     if name in phonebook:
         print(f'\nимя \t номер')
         for phone in phonebook[name]:
