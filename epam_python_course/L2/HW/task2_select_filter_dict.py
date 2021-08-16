@@ -101,6 +101,8 @@ def query(collection_list: list, select, *filters) -> list:
             filtered_collection.append(select(updated_record))
 
     return filtered_collection
+    # One more approach to implement in functional style
+    # return [select(item) for item in collection_list if all([filter(item) for filter in filters])]
 
 
 def main():
