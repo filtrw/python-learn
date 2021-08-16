@@ -56,6 +56,7 @@ def str_to_int2(input_str: str, previous_int: int = 0) -> int:
     # In case 10, 100, 1000 and so on, need to increment ten_power on 1 for correct computation multiplier and
     # take account "1" in "100"/"1000"/...
     # In other case math.ceil will rounds up.
+
     elif previous_int % math.log10(previous_int) == 0:
         ten_power = math.ceil(math.log10(previous_int) + 1)
     else:
