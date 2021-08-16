@@ -18,16 +18,18 @@ def str_to_int(input_str: str) -> int:
     :rtype: int
     """
     if len(input_str) == 1:
-        return ord(input_str[0])
+        return ord(input_str)
 
     previous_int = str_to_int(input_str[1:])
     # In case 10, 100, 1000 and so on, need to increment ten_power on 1 for correct computation multiplier and
     # take account "1" in "100"/"1000"/...
     # In other case math.ceil will rounds up.
-    if previous_int % math.log10(previous_int) == 0:
-        ten_power = math.ceil(math.log10(previous_int) + 1)
+
+    counter_of_ten_power = math.log10(previous_int)
+    if previous_int % counter_of_ten_power == 0:
+        ten_power = math.ceil(counter_of_ten_power + 1)
     else:
-        ten_power = math.ceil(math.log10(previous_int))
+        ten_power = math.ceil(counter_of_ten_power)
 
     return ord(input_str[0]) * pow(10, ten_power) + previous_int
 

@@ -37,7 +37,7 @@ def fib(n: int) -> int:
     fib_array = [0, 1]
 
     for element in range(2, n + 1):
-        fib_array.insert(element, (fib_array[element - 1] + fib_array[element - 2]))
+        fib_array.append(fib_array[element - 1] + fib_array[element - 2])
     print(f"Fib for number {n} is {fib_array[n]}")
     return fib_array[n]
 
